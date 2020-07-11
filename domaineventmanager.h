@@ -13,7 +13,7 @@ public:
     };
 
     DomainEventManager();
-    virtual ~DomainEventManager();
+    virtual ~DomainEventManager() override;
 
 protected:
     void processEvent(Event *pEvent) override;

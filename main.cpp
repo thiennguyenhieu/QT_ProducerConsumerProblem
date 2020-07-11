@@ -1,12 +1,16 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include "backendmanager.h"
+#include "loguru.hpp"
 
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
     QGuiApplication app(argc, argv);
+
+    loguru::init(argc, argv);
+    loguru::add_file("important.log", loguru::Truncate, loguru::Verbosity_MAX);
 
     BackendManager backendManager;
 

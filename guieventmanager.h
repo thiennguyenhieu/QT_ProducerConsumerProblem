@@ -13,7 +13,7 @@ public:
     };
 
     GuiEventManager();
-    virtual ~GuiEventManager();
+    virtual ~GuiEventManager() override;
 
 protected:
     void processEvent(Event *pEvent) override;

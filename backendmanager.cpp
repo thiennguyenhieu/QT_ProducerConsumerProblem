@@ -1,27 +1,28 @@
 #include "backendmanager.h"
-#include <QDebug>
+#include "loguru.hpp"
 #include "guieventmanager.h"
 #include "event.h"
 #include "domainaccess.h"
 
 BackendManager::BackendManager()
 {
-    qInfo() << "BackendManager is created";
+    LOG_F(INFO, "BackendManager is created");
+
     m_pGuiEventManager = new GuiEventManager();
     m_pDomainAccess = new DomainAccess();
 
     std::this_thread::sleep_for(std::chrono::milliseconds(1));
     actionTest(GuiEventManager::EVENT_GUI_SELECT_PROGRAM, 1);
     std::this_thread::sleep_for(std::chrono::milliseconds(1));
-    actionTest(GuiEventManager::EVENT_GUI_SET_OPT_VALUE, (float)1.1);
+    actionTest(GuiEventManager::EVENT_GUI_SET_OPT_VALUE, static_cast<float>(1.1));
     std::this_thread::sleep_for(std::chrono::milliseconds(1));
     actionTest(GuiEventManager::EVENT_GUI_SELECT_PROGRAM, 2);
-    actionTest(GuiEventManager::EVENT_GUI_SET_OPT_VALUE, (float)1.2);
+    actionTest(GuiEventManager::EVENT_GUI_SET_OPT_VALUE, static_cast<float>(1.2));
 }
 
 BackendManager::~BackendManager()
 {
-    qInfo() << "BackendManager is destroyed";
+    LOG_F(INFO, "BackendManager is destroyed");
 
     if (m_pGuiEventManager)
     {

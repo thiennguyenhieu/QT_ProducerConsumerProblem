@@ -1,15 +1,15 @@
 #include "guieventmanager.h"
 #include "event.h"
-#include <QDebug>
+#include "loguru.hpp"
 
 GuiEventManager::GuiEventManager()
 {
-    qInfo() << "GuiEventManager is created";
+    LOG_F(INFO, "GuiEventManager is created");
 }
 
 GuiEventManager::~GuiEventManager()
 {
-    qInfo() << "GuiEventManager is destroyed";
+    LOG_F(INFO, "GuiEventManager is destroyed");
 }
 
 void GuiEventManager::processEvent(Event *pEvent)
@@ -17,7 +17,7 @@ void GuiEventManager::processEvent(Event *pEvent)
     if (pEvent == nullptr)
         return;
 
-    qInfo() << "GuiEventManager is processing event " << pEvent->getEventID();
+    LOG_F(INFO, "GuiEventManager is processing event %d", pEvent->getEventID());
 
     int *pIntData = nullptr;
     float *pFloatData = nullptr;
@@ -26,12 +26,12 @@ void GuiEventManager::processEvent(Event *pEvent)
     {
     case EVENT_GUI_SELECT_PROGRAM:
         pIntData = static_cast<int*>(pEvent->getEventData());
-        qInfo() << "val " << *pIntData;
+        LOG_F(INFO, "val %d", *pIntData);
         break;
 
     case EVENT_GUI_SET_OPT_VALUE:
         pFloatData = static_cast<float*>(pEvent->getEventData());
-        qInfo() << "val " << *pFloatData;
+        LOG_F(INFO, "val %f", *pFloatData);
         break;
 
     default:
@@ -63,7 +63,7 @@ void GuiEventManager::destroyEvent(Event *pEvent)
         break;
     }
 
-    qInfo() << "GuiEventManager is destroying event " << pEvent->getEventID();
+    LOG_F(INFO, "GuiEventManager is destroying event %d", pEvent->getEventID());
 
     delete pEvent;
 }

@@ -19,6 +19,7 @@ SOURCES += \
         domaineventmanager.cpp \
         eventmanager.cpp \
         guieventmanager.cpp \
+        loguru.cpp \
         main.cpp
 
 RESOURCES += qml.qrc
@@ -40,4 +41,5 @@ HEADERS += \
     domaineventmanager.h \
     event.h \
     eventmanager.h \
-    guieventmanager.h
+    guieventmanager.h \
+    loguru.hpp

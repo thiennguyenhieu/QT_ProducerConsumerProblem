@@ -14,8 +14,8 @@ public:
     EventManager();
     virtual ~EventManager();
 
-    void produceEvent(unsigned int uEventID, int val);
-    void produceEvent(unsigned int uEventID, float val);
+    void produceEvent(int uEventID, int val);
+    void produceEvent(int uEventID, float val);
 
 protected:
     virtual void processEvent(Event *pEvent) = 0;

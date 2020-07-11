@@ -1,15 +1,15 @@
 #include "domaineventmanager.h"
-#include <QDebug>
+#include "loguru.hpp"
 #include "event.h"
 
 DomainEventManager::DomainEventManager()
 {
-    qInfo() << "DomainEventManager is created";
+    LOG_F(INFO, "DomainEventManager is created");
 }
 
 DomainEventManager::~DomainEventManager()
 {
-    qInfo() << "DomainEventManager is destroyed";
+    LOG_F(INFO, "DomainEventManager is destroyed");
 }
 
 void DomainEventManager::processEvent(Event *pEvent)
@@ -17,7 +17,7 @@ void DomainEventManager::processEvent(Event *pEvent)
     if (pEvent == nullptr)
         return;
 
-    qInfo() << "DomainEventManager is processing event " << pEvent->getEventID();
+    LOG_F(INFO, "DomainEventManager is processing event %d", pEvent->getEventID());
 }
 
 void DomainEventManager::destroyEvent(Event *pEvent)
@@ -44,7 +44,7 @@ void DomainEventManager::destroyEvent(Event *pEvent)
         break;
     }
 
-    qInfo() << "DomainEventManager is destroying event " << pEvent->getEventID();
+    LOG_F(INFO, "DomainEventManager is destroying event %d", pEvent->getEventID());
 
     delete pEvent;
 }
